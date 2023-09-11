@@ -1,5 +1,5 @@
 {
-  "name": "webpmaker",
+  "name": "WebpMaker",
   "version": "1.0.0",
   "description": "jpeg to webp format convertor",
   "main": "index.js",
