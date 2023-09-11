@@ -14,9 +14,8 @@ public class WebpMaker extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("coolMethod")) {
-            String message = args.getString(0);
-            this.coolMethod(message, callbackContext);
+        if (action.equals("add")) {
+            this.add(args, callbackContext);
             return true;
         }
         return false;
@@ -27,6 +26,21 @@ public class WebpMaker extends CordovaPlugin {
             callbackContext.success(message);
         } else {
             callbackContext.error("Expected one non-empty string argument.");
+        }
+    }
+
+    private void add(JSONArray args,CallbackContext callbackContext){
+        if(args != null){
+            try{
+            int p1 =   Integer.parseInt(args.getJSONObject(0).getString("param1"));
+            int p2 =   Integer.parseInt(args.getJSONObject(0).getString("param2"));
+            int result = p1+p2;
+            callbackContext.success(" "+result);
+            }catch(Exception ex){
+                callbackContext.error("Something went wrong "+ex);
+            }
+        }else{
+            callbackContext.error("Please do not pass null value");
         }
     }
 }
